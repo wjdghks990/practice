@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- BootStrap 3.x -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+	#box {
+		width: 600px;
+		margin: auto;
+		margin-top: 20px;
+		box-shadow: 1px 1px 2px black;
+	}
+	th{
+		text-align: right;
+		background: #333333;
+		color: white;
+	}
+	
+	th:hover {
+		background: gray;
+	}
+	
+	textarea{
+		resize: none;
+	}
+
+</style>
+
+<script type="text/javascript">
+	
+	// 정규식
+	const regular_id = /^[A-Za-z]{1}[A-Za-z0-9]{3,7}$/;
+	const regular_pwd = /^[A-Za-z0-9]{4,6}$/;
+
+	function send(f){
+		
+		let name = f.name.value.trim();	// trim() - 공백제거		
+		let id = f.id.value;
+		let pwd = f.pwd.value;
+		let profile = f.profile.value;
+		
+		if(name == "") {
+			alert('이름을 입력하세요!');
+			f.name.value = ""; // 지우기
+			f.name.focus(); // 포커스
+			return;
+		}
+		if(regular_id.test(id) == false) {
+			alert('4~8자리 영숫자로 입력하세요.');
+			f.id.value = ""; // 지우기
+			f.id.focus(); // 포커스
+			return;
+		}
+		if(regular_pwd.test(pwd) == false) {
+			alert('4~6자리 영숫자로 입력하세요.');
+			f.pwd.value = ""; // 지우기
+			f.pwd.focus(); // 포커스
+			return;
+		}
+		if(profile == "") {
+			alert('1글자 이상 입력하세요!');
+			f.profile.value = ""; // 지우기
+			f.profile.focus(); // 포커스
+			return;
+		}
+		
+		// 전송처리
+		f.action = "result_input.jsp"; // MemberRegisterAction
+		f.method = "GET"; // 생략시 기본값 : GET
+		
+		f.submit(); // 전송
+	}
+
+</script>
+
+</head>
+
+<!--
+	form : 서버로 데이터 전송시 사용하는 Tag
+	속성 :
+	   1. action : 전송대상(누구에게..) / 생략시 자신에게 전송
+	   2. method : 전송방식
+                   GET : URL 주소를 통해서 전송(QueryString 방식)
+                   Query 
+                   POST : request body에 넣어서 전송(보안성좋다)
+       cf) URL => https://www.w3schools.com/action_page.do?fname=John&Iname=Doe
+                  protocol : https
+                  host : www.w3shools.com(port 생략되어 있음 : https는 port를 내부로 hide처리함)
+                  path : action_page.do
+                  query : fname=John&Iname=Doe
+                          name=value&name=value <- Query
+-->
+
+<body>
+
+	<form action="" method="get">
+	<div id="box">
+		<table class="table table-hover table-bordered">
+			<!-- 1번째줄 required:반드시입력(이 input안에 정보를 입력해야 넘어간다) -->
+			<tr>
+				<th>이름</th>
+				<td><input class="form-control" type="text" name="name" autofocus placeholder="이름을 입력하세요" required="required"></td> <!-- required는 필수 입력 -->
+			</tr>
+			
+			<!-- 2번째줄 -->
+			<tr>
+				<th>아이디</th>
+				<td><input class="form-control" type="text" size="30" name="id" autofocus placeholder="아이디는 4~8자리 영숫자 조합" required="required"></td>
+			</tr>
+			
+			<!-- 3번째줄 -->
+			<tr>
+				<th>비밀번호</th>
+				<td><input class="form-control" type="password" size="30" name="pwd" autofocus placeholder="비밀번호 4~6자리 영숫자 조합" required="required"></td>
+			</tr>
+			
+			<!-- 4번째줄 checked:기본으로 체크되어 있음 name이 같아야 그룹으로 잡혀서 체크 해제가 된다. -->
+			<tr>
+				<th>성별</th>
+				<td>
+				<input type="radio" name="gender" value="남자" checked="checked">남자
+				<input type="radio" name="gender" value="여자">여자
+				</td>
+			</tr>
+																								
+			<!-- 5번째줄 -->
+			<tr>
+				<th>취미</th>
+				<td>
+				<!-- check된 항목만 넘어간다 -->
+				<input type="checkbox" name="hobby" value="여행">여행
+				<input type="checkbox" name="hobby" value="보드게임">보드게임
+				<input type="checkbox" name="hobby" value="독서">독서
+				<input type="checkbox" name="hobby" value="프로그래밍">프로그래밍
+				</td>
+			</tr>
+			
+			<!-- 6번째줄 -->
+			<tr>
+				<th>친구</th>
+				<td>
+					<input class="form-control" name="friend"><br>
+					<input class="form-control" name="friend"><br>
+					<input class="form-control" name="friend"><br>
+				</td>
+			</tr>
+																						
+			<!-- 7번째줄 -->
+			<tr>
+				<th>혈액형</th>
+				<td>
+				<select name="blood">
+					<option value="A형">A형</option>
+					<option value="B형">B형</option>
+					<option value="O형">O형</option>
+					<option value="AB형">AB형</option>
+				</select>
+				</td>
+			</tr>
+																					
+			<!-- 8번째줄 -->
+			<tr>
+				<th>자기소개</th>
+				<td>
+					<textarea class="form-control" name="profile" rows="5" cols="40"></textarea>
+				</td>
+			</tr>			
+			
+			<!-- 버튼 -->
+			<tr>
+				<td colspan="2" align="center">
+					<input class="btn btn-info" type="button" value="전송" onclick="send(this.form);">
+					<input class="btn btn-danger" type="reset" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+
+</body>
+
+
+</html>
