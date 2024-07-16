@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- Javascript External 연결 -->
+<!-- 별도의 코드 작성하면 안됨! 원하면, 새로운 script 태그를 만들어야 함 -->
+<script src="../js/person.js"></script> 
+
+<script type="text/javascript">
+	
+	const p = new Person("홍길동",30,"010-111-1234");
+	
+	p.age = -25;
+	
+	document.write("p's name : " + p.name + "<br>");
+	document.write("p's age : " + p.age + "<br>");
+	document.write("p's tel : " + p.tel + "<br>");
+	
+	// 함수 호출
+	// JSON.parse("str json")
+	// String -> JSON으로 변환
+	document.write("p's JSON : " + p.toJSON() + "<br>");
+	
+	const pp = JSON.parse(p.toJSON());
+	document.write(typeof(pp));
+	document.write(pp.name + "<br>");
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

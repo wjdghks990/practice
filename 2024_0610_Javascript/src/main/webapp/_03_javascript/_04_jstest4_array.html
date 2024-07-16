@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	//Array 선언           0     1     2     3    4     5
+	const sido_array = ["서울","경기","인천","대전","대구","광주"];
+	
+	sido_array.push('제주'); // 맨뒤 배열값 추가
+	let s = sido_array.pop(); // 맨뒤 배열깂 추출
+	console.log("맨뒤",s);
+	
+	let s1 = sido_array.shift(); // 맨앞 배열값 추출
+	console.log("맨앞",s1);
+	
+	sido_array.unshift("서울"); // 맨앞 배열값 추가
+	
+	document.write("sido_array's length : " + sido_array.length + "<br>");
+
+	document.write("sido_array[0] : " + sido_array[0] + "<br>");
+	
+	
+	
+	/* 초기화 함수 */
+	window.onload = () => { // function(){} 
+
+	document.write("----sido_array index방식----<br>");
+	for(let i = 0; i < sido_array.length; i++) {
+		document.write(`sido_array[${i}] : ${sido_array[i]}<br>`);
+	}
+	
+	document.write("----sido_array for ~ in방식----<br>");
+	/* 자바의 개선 루프와 유사하나, index를 반환한다. */
+	for(let i in sido_array) {
+		document.write(`sido_array[${i}] : ${sido_array[i]}<br>`);		
+	}	
+	
+	document.write("----sido_array for ~ of방식----<br>");
+	/* 자바의 개선 루프와 유사하다. */
+	for(let sido of sido_array) {
+		document.write(sido + "<br>")
+	}
+	
+	document.write("----sido_array ul로 출력----<br>");
+	document.write('<div id="disp"></div>');
+	
+	let html = "<ul>";
+	
+	// sido_array 넣어서 출력
+	for(let i in sido_array) {
+		html += "<li>"+ i +"</li>";
+	}
+	
+	html += "</ul>";
+	
+	document.getElementById("disp").innerHTML = html;
+	
+	}; // function() - end
+		
+</script>
+
+</head>
+<body>
+	<div id="disp"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	
+	const p_array = [
+		{"name":"일길동", "age":21, "addr":"서울시 관악구 남부순환로5"}, // 0
+		{"name":"이길동", "age":22, "addr":"서울시 관악구 남부순환로4"}, // 1
+		{"name":"삼길동", "age":23, "addr":"서울시 관악구 남부순환로3"}, // 2
+		{"name":"사길동", "age":24, "addr":"서울시 관악구 남부순환로2"}, // 3
+		{"name":"오길동", "age":25, "addr":"서울시 관악구 남부순환로1"}	 // 4
+	];
+	
+	let html = "<table border='1' width='500px'>";
+		html += "<tr><th>이름</th><th>나이</th><th>주소</th></tr>"
+		
+		/* Data 출력 */
+		for(let person of p_array) {
+			html += `<tr><td>${ person.name }</td><td>${ person.age }</td><td>${ person.addr }</td></tr>`
+		}
+		
+		
+		html += "</table>";
+	
+		document.write(html);
+			
+</script>
+</head>
+<body>
+
+</body>
+</html>

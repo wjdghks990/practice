@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sunil6_blue4</title>
+<style type="text/css">
+@font-face {
+    font-family: 'TTTogether';
+    src:
+        url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+}
+#quickmenu {
+    position: fixed;
+    right: 10px;
+    top: 70px;
+    z-index: 4;
+}
+#quickmenu img {
+    width: 150px;
+    display: inline-block;
+}
+#closeButton {
+    position: absolute;
+    bottom: 7px;
+    right: 5px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "TTTogether";
+    z-index: 5;
+}
+.container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between; /* 양 끝으로 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.container .left img {
+    width: 100px;
+    height: 50px;
+}
+.container .right {
+    display: flex;
+    justify-content: flex-end;
+}
+.btn {
+    margin: 10px;
+    padding: 10px 20px; /* 버튼 크기 고정 */
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "TTTogether";
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: auto; /* 버튼 크기 고정 */
+    height: auto; /* 버튼 크기 고정 */
+}
+.btn:hover {
+    background-position: right center;
+}
+.btn-5 {
+    height: auto;
+    background-image: linear-gradient(to right, #eef8ff 0%, #9dd9ff 51%, #9dd9ff 100%);
+}
+.dropdown-label {
+    font-size: 12px;
+    margin: 10px;
+    font-weight: bold;
+    color: rgb(50, 50, 50);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 5; 
+}
+.dropbtn_icon {
+    font-family: 'TTTogether';
+}
+.dropbtn {
+    display: block;
+    border: 2px solid rgb(94, 94, 94);
+    border-radius: 4px;
+    background-color: #fcfcfc;
+    font-weight: 400;
+    color: rgb(124, 124, 124);
+    padding: 12px;
+    width: 240px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 12px;
+    position: relative;
+}
+.dropdown-content {
+    display: none;
+    font-weight: 400;
+    background-color: #fcfcfc;
+    min-width: 240px;
+    border-radius: 8px;
+    height: 160px;
+    overflow: scroll;
+    box-shadow: 0px 0px 10px 3px rgba(190, 190, 190, 0.6);
+    position: absolute; 
+    z-index: 6; 
+}
+.dropdown-content::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+}
+.dropdown-content::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgb(194, 194, 194);
+}
+.dropdown-content div {
+    display: block;
+    text-decoration: none;
+    color: rgb(37, 37, 37);
+    font-size: 12px;
+    padding: 12px 20px;
+}
+.dropdown-content div:hover {
+    background-color: #9dd9ff;
+}
+.dropdown-content.show {
+    display: block;
+}
+#head #rogo {
+    width: 350px;
+}
+#headbanner {
+    width: 250px;
+}
+#head {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 25px;
+}
+#drowdownmenu {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    position: relative; /* 부모 요소의 위치를 기준으로 자식 요소 위치 설정 */
+    z-index: 2;
+}
+li.mainmenu {
+    list-style-type: none;
+    position: relative; /* 부모 요소의 위치를 기준으로 자식 요소 위치 설정 */
+    width: 100%; 
+}
+li.mainmenu a {
+    display: block;
+    background: #9dd9ff;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px gray;
+    font-family: "TTTogether";
+    padding: 10px;
+    border-bottom: 1px solid #ffffff;
+    width: 100%;
+    box-sizing: border-box; 
+}
+li.mainmenu ul {
+    margin: 0px;
+    list-style-type: none;
+    padding: 0px;
+    position: absolute; /* 부모 요소를 기준으로 절대 위치 설정 */
+    top: 100%; /* 부모 요소 바로 아래에 위치 */
+    left: 0; /* 부모 요소와 같은 왼쪽 위치 */
+    display: none; /* 처음에 숨기기 */
+    z-index: 3; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+li.mainmenu ul li a {
+    background-color: #9dd9ff;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px gray;
+    font-family: "TTTogether";
+    padding: 10px;
+    border-bottom: 1px solid #ffffff;
+    display: block;
+    width: 100%;
+    box-sizing: border-box; 
+}
+ul#drowdownmenu li a:hover {
+    background-color: white;
+    color: #9dd9ff;
+}
+#posterBox {
+    margin-top: 30px;
+}
+#box1 {
+    width: 1200px;
+    height: 300px;
+    background-color: gold;
+    border: 4px solid #9dd9ff;
+    overflow: hidden; /* 자식영역이 부모영역보다 크면 오버된 영역 감추기 */
+    position: relative; /* 자식영역 absolute로 할 경우 relative가 기준이 된다 */
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+}
+#box2 {
+    width: 7200px;
+    height: 300px;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    left: 0px;
+}
+#box2 ul li {
+    list-style-type: none;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+#box2 ul li img {
+    width: 1200px;
+    height: 300px;
+}
+#center {
+    margin-top: 20px;
+    text-align: center;
+}
+#center-sub {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+#mainbanner {
+    margin: 100px;
+    width: 800px;
+}
+.box3 {
+    width: 1500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: auto;
+    margin-right: auto;
+}
+.box3 img {
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript">
+    window.onload=()=>{
+        document.querySelector('.dropbtn_click').onclick = ()=>{
+          dropdown();
+        };
+        dropdown = () => {
+          var v = document.querySelector('.dropdown-content');
+          var dropbtn = document.querySelector('.dropbtn')
+          v.classList.toggle('show');
+          dropbtn.style.borderColor = 'rgb(94, 94, 94)';
+        }
+      }
+    $(document).ready(function() {
+        // 1초에 한번씩 함수 수행 
+        setInterval(moveImage, 4000); // cf) setTimeout(fn,시간);
+        // quickmenu의 이미지의 top 위치가 얼마인지 담기
+        var top = parseInt($("#quickmenu img").css("top"));
+        console.log(top);
+        // 스크롤 되어질 때 quickmenu의 속성값도 이동하게 설정
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            console.log("scrollTop : " + scrollTop);
+            var quickTop = top + scrollTop;
+            $("#quickmenu img").animate({
+                top : quickTop
+            }, 20);
+        });
+        // 상단 메인 메뉴 관리
+        $("li.mainmenu ul").hide(); // 하위메뉴 숨기기
+        $("li.mainmenu").hover(function() {
+            $("ul", this).slideDown(300);
+        }, function() {
+            $("ul", this).slideUp(300);
+        });
+        // X 버튼 클릭 시 quickmenu 숨기기
+        $("#closeButton").click(function() {
+            $("#quickmenu").hide();
+        });
+    });
+    function moveImage() {
+        $("#box2").animate({
+            "left" : "-=1200"
+        }, 1200, function() {
+            var left = parseInt($("#box2").css("left"));
+            if (left < -2401) {
+                $("#box2").css("left", "0px");
+            }
+        });
+    }
+</script>
+</head>
+<body>
+    <!-- 따라오는 메인 스크롤 배너 -->
+    <div id="quickmenu">
+        <a href="javascript:void(0)" id="closeButton">X</a> <a
+            href="https://smhrd.or.kr/" target="_blank"> <img
+            src="image/scroll.png">
+        </a>
+    </div>
+    <!-- 회원가입 로그인 버튼 -->
+    <div class="container">
+        <div class="left">
+            <img src="image/pingblue.png">
+        </div>
+        <div class="right">
+            <a class="btn btn-5">회원가입</a> <a class="btn btn-5">로그인</a>
+        </div>
+    </div>
+    </div>
+    <!-- 상단 메인 로고 -->
+    <div id="head">
+        <img id="rogo" src="image/pingblue.png">
+        <div class="dropdown-label">
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <span class="dropbtn_click"
+                    style="font-family: TTTogether; font-size: 16px; color: #3b3b3b; float: center;"
+                    onclick="dropdown()">게임 찾아보기</span>
+            </button>
+            <div class="dropdown-content">
+                <div class="gamechoice" onclick="showMenu(this.innerText)">게임1</div>
+                <div class="gamechoice" onclick="showMenu(this.innerText)">게임2</div>
+                <div class="gamechoice" onclick="showMenu(this.innerText)">게임3</div>
+                <div class="gamechoice" onclick="showMenu(this.innerText)">게임4</div>
+                <div class="gamechoice" onclick="showMenu(this.innerText)">게임5</div>
+                <div class="gamechoice" onclick="showMenu(this.innerText)">게임6</div>
+                <div class="gamechoice" onclick="showMenu(this.innerText)">게임7</div>
+            </div>
+        </div>
+    </div>
+    <div
+        style="clear: both; position: relative; border: 1px solid #9dd9ff;"></div>
+    <!-- 상단메인메뉴 클래스 -->
+    <ul id="drowdownmenu">
+        <li class="mainmenu"><a href="#">보드핑</a>
+            <ul>
+                <li><a href="#">넥슨카드</a></li>
+                <li><a href="#">틴캐시</a></li>
+                <li><a href="#">와우캐시</a></li>
+            </ul></li>
+        <li class="mainmenu"><a href="#">상품권</a>
+            <ul>
+                <li><a href="#">문화상품권</a></li>
+                <li><a href="#">구글기프트카드</a></li>
+                <li><a href="#">해피머니</a></li>
+            </ul></li>
+        <li class="mainmenu"><a href="#">이벤트</a>
+            <ul>
+                <li><a href="#">문화상품권</a></li>
+                <li><a href="#">구글기프트카드</a></li>
+                <li><a href="#">해피머니</a></li>
+            </ul></li>
+        <li class="mainmenu"><a href="#">고객문의</a>
+            <ul>
+                <li><a href="#">문화상품권</a></li>
+                <li><a href="#">구글기프트카드</a></li>
+                <li><a href="#">해피머니</a></li>
+            </ul></li>
+        <li class="mainmenu"><a href="#">게시판</a>
+            <ul>
+                <li><a href="#">문화상품권</a></li>
+                <li><a href="#">구글기프트카드</a></li>
+                <li><a href="#">해피머니</a></li>
+            </ul></li>
+        <li class="mainmenu"><a href="#">공지사항</a>
+            <ul>
+                <li><a href="#">문화상품권</a></li>
+                <li><a href="#">구글기프트카드</a></li>
+                <li><a href="#">해피머니</a></li>
+            </ul></li>
+    </ul>
+    <!-- 메인배너 박스 -->
+    <div id="posterBox">
+        <div id="box1">
+            <div id="box2">
+                <ul>
+                    <li><img src="image/tent.png" /></li>
+                    <li><img src="image/grill.png" /></li>
+                    <li><img src="image/fire.png" /></li>
+                    <li><img src="image/tent.png" /></li>
+                    <li><img src="image/grill.png" /></li>
+                    <li><img src="image/fire.png" /></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="center">
+        <div id="center-sub">
+            <img src="image/shop1.png">
+        </div>
+        <div>
+            <a href="https://smhrd.or.kr/" target="_blank"> <img
+                id="center-product-menu" src="image/productmenu.JPG">
+            </a>
+        </div>
+        <div>
+            <img id="mainbanner" src="image/mainbanner.png">
+        </div>
+    </div>
+    <div class="box3">
+        <img src="image/nexoncash.jpg" /> <img src="image/nexoncash.jpg" />
+        <img src="image/nexoncash.jpg" />
+    </div>
+    <div class="box3">
+        <img src="image/nexoncash.jpg" /> <img src="image/nexoncash.jpg" />
+        <img src="image/nexoncash.jpg" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+	*{font-size: 0;} /* <span>사이에 있는 엔터 공백을 없애기 위함 */
+	
+	#ampm{
+		width: 80px;
+		color: yellow;
+	}
+
+	span{
+	/* 크기 조절하기 위해 */
+		display: inline-block;
+		width: 60px;
+		height: 80px;
+		background: black;
+		color: white;
+		font-size: 50px;
+		font-weight: bold;
+		text-align: center;
+	}
+	
+	.colon{
+		width: 30px;
+	}
+</style>
+
+<script type="text/javascript">
+
+/* 자바 스크립트 함수선언 방법 */
+// 1. 선언적 방식(가장 보편적)
+function 함수명1(){}
+// 2. 리터럴 방식
+const 함수명2 = function(){};
+// 3. Arrow Function(1회용 함수) - 람다식 활용
+const 함수명3 = () => {};
+
+//    상수  리터럴
+const PI = 3.141592;
+
+let timer = null; // 타이머 해제 변수
+
+ /* Browswer에 모든 요소(Element)가, 배치가 완료되면 호출하는 이벤트 */
+window.onload = function(){
+	/* document.getElementById("hour").innerHTML = 12; /* 호출되었을 때, 동작함 */
+	/* document.getElementById("minute").innerHTML = 12; /* 호출되었을 때, 동작함 */
+	/* document.getElementById("second").innerHTML = 12; /* 호출되었을 때, 동작함 */
+	
+// Timer:        함수        시간
+	setTimeout(display_time,0); // 1회만 호출
+	
+	setInterval(display_time,500); // 지정된 시간 간격으로 지속적 호출
+	
+	//타이머 해제
+//	clearInterval(timer);
+};
+
+let watch_color = true;
+function display_time() {
+	
+	// 현재 시스템 시간 
+	const now = new Date();
+	
+	let hour = now.getHours(); // 시간 읽어오기
+	let minute = now.getMinutes(); // 분 읽어오기
+	let second = now.getSeconds(); // 초 읽어오기
+	
+	let ampm = (hour<12) ? 'AM' : 'PM';
+/* 	if(hour>12)
+		hour = hour%12; */
+	
+	
+	// 보완: 시간이 단자리일 경우 앞에 '0' 붙이기
+	//		AM, PM 붙이기	
+	document.getElementById("ampm").innerHTML = ampm; // 시간이 12시보다 작으면 AM으로 표시, 크면 PM으로 표시
+	document.getElementById("ampm").style.color = hour<12 ? "blue" : "yellow"; // AM일 땐 파란색으로 표시, PM일 땐 노란색으로 표시
+	if(hour > 12) {
+		document.getElementById("hour").innerHTML = hour-12<10 ? '0'+(hour-12) : hour-12;
+	} else {
+		document.getElementById("hour").innerHTML = hour<10 ? '0'+hour : hour;
+	}
+	document.getElementById("minute").innerHTML = minute<10 ? '0'+minute : minute;
+	document.getElementById("second").innerHTML = second<10 ? '0'+second : second;
+	
+	// toggle 처리
+	watch_color = !watch_color;
+	
+	//class="colon"인 Elements정보 구하기
+	//개수에 상관없이 배열값을 넣어서 받아야 함.
+	let colons = document.getElementsByClassName("colon");
+	//console.log(colons.length);
+	colons[0].style.color = watch_color ? "black" : "white";
+	colons[1].style.color = watch_color ? "black" : "white";
+	
+	
+	// setTimeout(display_time,1000);
+}
+
+</script>
+</head>
+<body>
+
+<span id="ampm">PM</span>
+<span id="hour">14</span>
+<span class="colon">:</span>
+<span id="minute">40</span>
+<span class="colon">:</span>
+<span id="second">30</span>
+
+</body>
+</html>
