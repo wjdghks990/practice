@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	const regular_num = /^\d{1,5}$/;
+	
+	function send(f){
+		
+		// 두 가지 방법만 위험함 (this 활용)
+		// form name을 알고 있을 때
+		//const f = document.ff;
+		
+		// form name을 모를 때
+		//const f = document.forms[0];
+		
+		let su1 = f.su1.value;
+		let su2 = f.su2.value;
+		
+		// 입력값 체크....: 숫자만 입력...
+		if(regular_num.test(su1) == false) {
+			alert("5자리 이하의 숫자만 입력하세용.");
+			f.su1.value='';
+			f.su1.focus();
+			return;
+		}
+		
+		if(regular_num.test(su2) == false) {
+			alert("5자리 이하의 숫자만 입력하세용.");
+			f.su2.value='';
+			f.su2.focus();
+			return;
+		}
+		
+		f.action="calc.do";
+		f.submit(); // 괄호() 누락되면 절대 안됨!!!!!!!!!!
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- form용도 : 서버로 데이터를 보내기위함 -->
+<form name="ff"> <!-- name="ff" 사용 지양! jsp 생각해보면 됨 -->
+	<div>
+		<!-- id는 클라이언트에서만 사용해야 함. name을 사용해야 서버에 데이터를 넘길 수 있음 -->
+		수1: <input name="su1">
+	</div>
+	<div>
+		수2: <input name="su2">
+	</div>
+	<div>
+		<!--                        this.form: this를 소유하고 있는 폼                           -->
+		<input type="button" value="계산해줘" onclick="send(this.form);">
+	</div>
+</form>
+
+</body>
+</html>

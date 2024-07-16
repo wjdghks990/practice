@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- GET : URL주소의 Query(name=value&name=value)를 통해서 Parameter가 전달 -->
+<form method="get" action="lifecycle.do">
+	<input name="msg">
+	<input type="submit" value="get 요청">
+</form>
+
+<!-- POSR: request body안에 숨겨져서 전송(parameter가 전달) -->
+<form method="post" action="lifecycle.do">
+	<input name="msg">
+	<input name="age" value="20">
+	<input type="submit" value="post 요청">
+</form>
+
+</body>
+</html>
